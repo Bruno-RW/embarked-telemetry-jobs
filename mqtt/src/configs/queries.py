@@ -1,0 +1,20 @@
+QUERY_ENABLE_UUID = """
+    CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
+"""
+
+QUERY_CREATE_TABLE ="""
+    CREATE TABLE location (
+        id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+        LATITUDE FLOAT NULL,
+        LONGITUDE FLOAT NULL,
+        ALTITUDE FLOAT NULL,
+        HDOP FLOAT NULL,
+        SATELLITES INT NULL,
+        DATE_TIME TIMESTAMP NULL
+    );
+"""
+
+QUERY_INSERT_DATA = """
+    INSERT INTO location (LATITUDE, LONGITUDE, ALTITUDE, HDOP, SATELLITES, DATE_TIME)
+    VALUES (%s, %s, %s, %s, %s, %s)
+"""
